@@ -147,7 +147,7 @@ def get_claude_prompt(
 def run_main():
     df = pd.read_csv("class_data.csv")
     image_rows = []
-    for index, row in tqdm(df.iterrows()):
+    for index, row in tqdm(df.iterrows(), total=df.shape[0]):
         img_dir = "./dataset/" + row["subject_name"]
         for img_file in os.listdir(img_dir):
             full_dir = os.path.join(img_dir, img_file)
