@@ -6,6 +6,7 @@ from typing import Literal
 
 import pandas as pd
 import PIL
+from PIL.Image import Image as Pimage
 
 import datasets
 from datasets import Dataset
@@ -24,7 +25,7 @@ class TrainingImage:
 
 
 def base64_encode_image(
-        input_image: PIL.Image.Image,
+        input_image: Pimage,
         quality: int = 95
 ) -> str:
     """
@@ -109,7 +110,7 @@ def get_prompt_list(
 def get_claude_prompt(
         subject_name: str,
         category: str,
-        image: PIL.Image.Image
+        image: Pimage,
 ):
     b64_image = base64_encode_image(image)
     message = client.messages.create(
